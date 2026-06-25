@@ -1,0 +1,170 @@
+<form class="egs-entry-form standard-form" autocomplete="off">
+  <div class="form-group">
+    <label>{{localize "EGS.Field.Name"}}</label>
+    <div class="form-fields">
+      <input type="text" name="name" value="{{entry.name}}" required>
+    </div>
+  </div>
+
+  {{#if isGem}}
+  <div class="form-group">
+    <label>{{localize "EGS.Field.GemType"}}</label>
+    <div class="form-fields">
+      <input type="text" name="gemType" value="{{entry.gemType}}">
+    </div>
+  </div>
+  {{/if}}
+
+  <div class="form-group">
+    <label>{{#if isGem}}{{localize "EGS.Field.Tier"}}{{else}}{{localize "EGS.Field.Rank"}}{{/if}}</label>
+    <div class="form-fields">
+      <input type="number" name="rank" value="{{entry.rank}}" min="0" step="1">
+      <input type="text" name="tierLabel" value="{{entry.tierLabel}}" placeholder="{{localize 'EGS.Field.TierLabelPlaceholder'}}">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "EGS.Field.SlotCost"}}</label>
+    <div class="form-fields">
+      <input type="number" name="slotCost" value="{{entry.slotCost}}" min="0" step="1">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "EGS.Field.GPCost"}}</label>
+    <div class="form-fields">
+      <input type="number" name="gpCost" value="{{entry.gpCost}}" min="0" step="0.01">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "EGS.Field.Enabled"}}</label>
+    <div class="form-fields">
+      <input type="checkbox" name="enabled" {{checked entry.enabled}}>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "EGS.Field.Icon"}}</label>
+    <div class="form-fields egs-image-field">
+      <input type="text" name="img" value="{{entry.img}}">
+      <button type="button" data-action="pick-image" data-tooltip="EGS.Action.BrowseFiles">
+        <i class="fas fa-file-import"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "EGS.Field.SourceUUID"}}</label>
+    <div class="form-fields">
+      <input type="text" name="sourceUuid" value="{{entry.sourceUuid}}">
+    </div>
+  </div>
+
+  <div class="form-group stacked">
+    <label>{{localize "EGS.Field.Description"}}</label>
+    <textarea name="description" rows="5">{{entry.description}}</textarea>
+  </div>
+
+  <fieldset class="egs-change-fieldset">
+    <legend>{{localize "EGS.MechanicalChanges"}}</legend>
+    <p class="hint">{{localize "EGS.MechanicalChangesHint"}}</p>
+
+    <div class="egs-change-list">
+      {{#each entry.changes as |change index|}}
+      <div class="egs-change-row" data-index="{{index}}" data-change-id="{{change.id}}" data-native-id="{{change.nativeId}}">
+        <div class="egs-change-grid">
+          <label>
+            <span>{{localize "EGS.Change.Target"}}</span>
+            <input type="text" data-field="target" name="changes.{{index}}.target" value="{{change.target}}" list="egs-target-options" placeholder="ac">
+          </label>
+          <label>
+            <span>{{localize "EGS.Change.Formula"}}</span>
+            <input type="text" data-field="formula" name="changes.{{index}}.formula" value="{{change.formula}}" placeholder="1">
+          </label>
+          <label>
+            <span>{{localize "EGS.Change.Operator"}}</span>
+            <select data-field="operator" name="changes.{{index}}.operator">
+              {{selectOptions ../operators selected=change.operator localize=true}}
+            </select>
+          </label>
+          <label>
+            <span>{{localize "EGS.Change.BonusType"}}</span>
+            <input type="text" data-field="type" name="changes.{{index}}.type" value="{{change.type}}" list="egs-bonus-type-options" placeholder="enh">
+          </label>
+          <label>
+            <span>{{localize "EGS.Change.Priority"}}</span>
+            <input type="number" data-field="priority" name="changes.{{index}}.priority" value="{{change.priority}}" step="1">
+          </label>
+          <label>
+            <span>{{localize "EGS.Change.Condition"}}</span>
+            <select data-field="condition" name="changes.{{index}}.condition">
+              {{selectOptions ../conditions selected=change.condition localize=true}}
+            </select>
+          </label>
+          <label>
+            <span>{{localize "EGS.Change.DamageType"}}</span>
+            <input type="text" data-field="damageType" name="changes.{{index}}.damageType" value="{{change.damageType}}">
+          </label>
+          <button type="button" class="egs-icon-button" data-action="remove-change" data-tooltip="EGS.Action.RemoveChange">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+
+    <button type="button" data-action="add-change">
+      <i class="fas fa-plus"></i> {{localize "EGS.Action.AddChange"}}
+    </button>
+  </fieldset>
+
+  <template class="egs-change-template">
+    <div class="egs-change-row" data-index="0">
+      <div class="egs-change-grid">
+        <label>
+          <span>{{localize "EGS.Change.Target"}}</span>
+          <input type="text" data-field="target" value="" list="egs-target-options" placeholder="ac">
+        </label>
+        <label>
+          <span>{{localize "EGS.Change.Formula"}}</span>
+          <input type="text" data-field="formula" value="0" placeholder="1">
+        </label>
+        <label>
+          <span>{{localize "EGS.Change.Operator"}}</span>
+          <select data-field="operator">
+            {{selectOptions operators selected="add" localize=true}}
+          </select>
+        </label>
+        <label>
+          <span>{{localize "EGS.Change.BonusType"}}</span>
+          <input type="text" data-field="type" value="untyped" list="egs-bonus-type-options" placeholder="enh">
+        </label>
+        <label>
+          <span>{{localize "EGS.Change.Priority"}}</span>
+          <input type="number" data-field="priority" value="0" step="1">
+        </label>
+        <label>
+          <span>{{localize "EGS.Change.Condition"}}</span>
+          <select data-field="condition">
+            {{selectOptions conditions selected="always" localize=true}}
+          </select>
+        </label>
+        <label>
+          <span>{{localize "EGS.Change.DamageType"}}</span>
+          <input type="text" data-field="damageType" value="">
+        </label>
+        <button type="button" class="egs-icon-button" data-action="remove-change" data-tooltip="EGS.Action.RemoveChange">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+    </div>
+  </template>
+
+  <datalist id="egs-target-options">
+    {{#each targets as |label key|}}<option value="{{key}}">{{label}}</option>{{/each}}
+  </datalist>
+  <datalist id="egs-bonus-type-options">
+    {{#each bonusTypes as |label key|}}<option value="{{key}}">{{label}}</option>{{/each}}
+  </datalist>
+</form>

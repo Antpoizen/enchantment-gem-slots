@@ -1,0 +1,58 @@
+<div class="pf1 chat-card egs-chat-card" data-item-uuid="{{item.uuid}}">
+  <header class="egs-chat-header">
+    <img src="{{item.img}}" alt="">
+    <div>
+      <h3>{{item.name}}</h3>
+      {{#if canSeeDetails}}
+      <div>{{localize "EGS.Enchantments"}}: {{summary.enchantment.used}} / {{summary.enchantment.max}}</div>
+      <div>{{localize "EGS.Gems"}}: {{summary.gem.used}} / {{summary.gem.max}}</div>
+      {{/if}}
+    </div>
+  </header>
+
+  {{#unless canSeeDetails}}
+  <p><i class="fas fa-eye-slash"></i> {{localize "EGS.Unidentified.HiddenDetails"}}</p>
+  {{else}}
+    {{#if enchantments.length}}
+    <section>
+      <h4>{{localize "EGS.Enchantments"}}</h4>
+      <ul>
+        {{#each enchantments as |entry|}}
+        <li>
+          <strong>{{entry.name}}</strong>
+          ({{localize "EGS.Field.Rank"}} {{entry.rank}}, {{localize "EGS.Slots.Cost"}} {{entry.effectiveSlotCost}})
+          {{#unless entry.enabled}}<em>— {{localize "EGS.Disabled"}}</em>{{/unless}}
+          {{#if entry.descriptionHTML}}<div>{{{entry.descriptionHTML}}}</div>{{/if}}
+        </li>
+        {{/each}}
+      </ul>
+    </section>
+    {{/if}}
+
+    {{#if gems.length}}
+    <section>
+      <h4>{{localize "EGS.Gems"}}</h4>
+      <ul>
+        {{#each gems as |entry|}}
+        <li>
+          <strong>{{entry.name}}</strong>
+          {{#if entry.gemType}}({{entry.gemType}}){{/if}}
+          ({{localize "EGS.Field.Tier"}} {{entry.rank}}, {{localize "EGS.Slots.Cost"}} {{entry.effectiveSlotCost}})
+          {{#unless entry.enabled}}<em>— {{localize "EGS.Disabled"}}</em>{{/unless}}
+          {{#if entry.descriptionHTML}}<div>{{{entry.descriptionHTML}}}</div>{{/if}}
+        </li>
+        {{/each}}
+      </ul>
+    </section>
+    {{/if}}
+  {{/unless}}
+
+  {{#if showWarnings}}
+    {{#each validation.errors as |error|}}
+    <p class="egs-chat-warning"><i class="fas fa-triangle-exclamation"></i> {{error.message}}</p>
+    {{/each}}
+    {{#each validation.warnings as |warning|}}
+    <p class="egs-chat-warning"><i class="fas fa-circle-exclamation"></i> {{warning.message}}</p>
+    {{/each}}
+  {{/if}}
+</div>

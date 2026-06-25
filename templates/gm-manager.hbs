@@ -1,0 +1,71 @@
+<form class="egs-manager-form" autocomplete="off">
+  <header class="egs-manager-header">
+    <div>
+      <h2><i class="fas fa-gem"></i> {{localize "EGS.GMManager.Title"}}</h2>
+      <p>{{localize "EGS.GMManager.Summary"}}: {{totalItems}} &middot; {{localize "EGS.GMManager.InvalidItems"}}: {{invalidItems}}</p>
+    </div>
+    <div class="egs-manager-version">
+      {{localize "EGS.GMManager.ModuleVersion"}}: {{version}}<br>
+      {{localize "EGS.GMManager.SchemaVersion"}}: {{schemaVersion}}
+    </div>
+  </header>
+
+  <div class="egs-manager-actions">
+    <button type="button" data-action="recalculate-all"><i class="fas fa-rotate"></i> {{localize "EGS.Action.RecalculateAll"}}</button>
+    <button type="button" data-action="clean-broken"><i class="fas fa-link-slash"></i> {{localize "EGS.Action.CleanBroken"}}</button>
+    <button type="button" data-action="enable-all"><i class="fas fa-toggle-on"></i> {{localize "EGS.Action.EnableAll"}}</button>
+    <button type="button" data-action="disable-all"><i class="fas fa-toggle-off"></i> {{localize "EGS.Action.DisableAll"}}</button>
+    <button type="button" data-action="export"><i class="fas fa-file-export"></i> {{localize "EGS.Action.Export"}}</button>
+    <button type="button" data-action="import"><i class="fas fa-file-import"></i> {{localize "EGS.Action.Import"}}</button>
+    <input type="file" accept="application/json,.json" data-import-file hidden>
+  </div>
+
+  <div class="egs-manager-table-wrap">
+    <table class="egs-manager-table">
+      <thead>
+        <tr>
+          <th>{{localize "EGS.GMManager.Item"}}</th>
+          <th>{{localize "EGS.GMManager.Owner"}}</th>
+          <th>{{localize "EGS.Enchantments"}}</th>
+          <th>{{localize "EGS.Gems"}}</th>
+          <th>{{localize "EGS.GMManager.Issues"}}</th>
+          <th>{{localize "EGS.GMManager.Actions"}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each rows as |row|}}
+        <tr class="{{#if row.invalid}}egs-invalid-row{{/if}}">
+          <td>
+            <div class="egs-manager-item">
+              <img src="{{row.img}}" alt="">
+              <div>
+                <strong>{{row.name}}</strong>
+                <small>{{row.type}}{{#if row.subType}} / {{row.subType}}{{/if}}</small>
+              </div>
+            </div>
+          </td>
+          <td>{{row.owner}}</td>
+          <td>{{row.enchantmentCount}} ({{row.enchantmentSlots}})</td>
+          <td>{{row.gemCount}} ({{row.gemSlots}})</td>
+          <td>
+            {{#if row.issueCount}}
+              <span class="egs-badge egs-badge-error">{{row.issueCount}}</span>
+              <div class="egs-manager-issues">
+                {{#each row.issues as |issue|}}<div>{{issue.message}}</div>{{/each}}
+              </div>
+            {{else}}
+              <span class="egs-badge">{{localize "EGS.GMManager.Valid"}}</span>
+            {{/if}}
+          </td>
+          <td class="egs-manager-controls">
+            <button type="button" class="egs-icon-button" data-action="open-item" data-uuid="{{row.uuid}}" data-tooltip="EGS.Action.OpenItem"><i class="fas fa-up-right-from-square"></i></button>
+            <button type="button" class="egs-icon-button" data-action="recalculate-item" data-uuid="{{row.uuid}}" data-tooltip="EGS.Action.Recalculate"><i class="fas fa-rotate"></i></button>
+          </td>
+        </tr>
+        {{else}}
+        <tr><td colspan="6" class="egs-empty">{{localize "EGS.GMManager.NoItems"}}</td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</form>

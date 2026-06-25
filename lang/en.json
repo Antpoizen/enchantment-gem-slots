@@ -1,0 +1,259 @@
+{
+  "EGS": {
+    "Tab": {
+      "Label": "Enchantments & Gems",
+      "Tooltip": "Configure enchantment slots and gem sockets"
+    },
+    "Configuration": "Slot Configuration",
+    "Enchantments": "Enchantments",
+    "Gems": "Gems",
+    "Disabled": "Disabled",
+    "InvalidRank": "Rank Too High",
+    "MissingSource": "Missing Source",
+    "MechanicalChanges": "Mechanical Changes",
+    "MechanicalChangesHint": "These entries are synchronized into PF1e's native ItemChange system. Use PF1e change targets and bonus types supported by PF1e 11.11.",
+    "MaximumRankHint": "A maximum rank of 0 means no rank limit for this item.",
+    "Field": {
+      "Name": "Name",
+      "Description": "Description",
+      "Rank": "Rank",
+      "Tier": "Tier",
+      "TierLabelPlaceholder": "Optional tier label",
+      "SlotCost": "Slot Cost",
+      "GPCost": "GP Cost",
+      "Enabled": "Enabled",
+      "Icon": "Icon",
+      "SourceUUID": "Source UUID",
+      "GemType": "Gem Type",
+      "BaseEnchantSlots": "Base Enchantment Slots",
+      "BonusEnchantSlots": "Bonus Enchantment Slots",
+      "MaximumRank": "Maximum Enchantment Rank",
+      "BaseGemSlots": "Base Gem Slots",
+      "BonusGemSlots": "Bonus Gem Slots",
+      "EnchantmentsEnabled": "Enable Enchantments on Item",
+      "GemsEnabled": "Enable Gems on Item"
+    },
+    "Slots": {
+      "Used": "Used",
+      "Remaining": "Remaining",
+      "Cost": "Slots"
+    },
+    "Action": {
+      "AddEnchantment": "Add Enchantment",
+      "AddGem": "Socket Gem",
+      "AddChange": "Add Mechanical Change",
+      "RemoveChange": "Remove Change",
+      "Edit": "Edit",
+      "Remove": "Remove",
+      "Toggle": "Enable or Disable",
+      "Save": "Save",
+      "Cancel": "Cancel",
+      "PostToChat": "Post to Chat",
+      "OpenSource": "Open Source Item",
+      "OpenItem": "Open Item",
+      "BrowseFiles": "Browse Files",
+      "Recalculate": "Recalculate",
+      "RecalculateAll": "Recalculate All",
+      "CleanBroken": "Clear Broken UUID References",
+      "EnableAll": "Enable All Entries",
+      "DisableAll": "Disable All Entries",
+      "Export": "Export JSON",
+      "Import": "Import JSON"
+    },
+    "Drop": {
+      "Enchantment": "Drop an Item here to create an enchantment reference",
+      "Gem": "Drop an Item here to create a gem reference"
+    },
+    "Empty": {
+      "Enchantments": "No enchantments are installed.",
+      "Gems": "No gems are socketed."
+    },
+    "Dialog": {
+      "EnchantmentTitle": "Configure Enchantment — {item}",
+      "GemTitle": "Configure Gem — {item}",
+      "RemoveTitle": "Remove Entry",
+      "RemoveConfirm": "Remove {name} from this item?"
+    },
+    "Change": {
+      "Target": "PF1e Target",
+      "Formula": "Formula",
+      "Operator": "Operator",
+      "BonusType": "Bonus Type",
+      "Priority": "Priority",
+      "Condition": "Condition",
+      "DamageType": "Damage Type / Note"
+    },
+    "Condition": {
+      "Always": "PF1e Active Item",
+      "Equipped": "Equipped",
+      "Carried": "Carried and PF1e Active",
+      "Identified": "Identified and PF1e Active",
+      "CarriedIdentified": "Carried, Identified, and PF1e Active"
+    },
+    "Operator": {
+      "Add": "Add",
+      "Set": "Set"
+    },
+    "Effects": {
+      "NativeHint": "Mechanical changes use PF1e 11.11's native ItemChange engine. Physical-item changes are ultimately governed by PF1e's active-item rules, including equipped state, quantity, and item hit points."
+    },
+    "Unidentified": {
+      "HiddenDetails": "The item's enchantment and gem details are hidden while the item is unidentified."
+    },
+    "Validation": {
+      "EmptyName": "An enchantment or gem must have a name.",
+      "EmptyFormula": "Mechanical changes must have a formula.",
+      "InvalidFormula": "The formula '{formula}' is invalid: {error}",
+      "EnchantmentOverSlots": "Enchantment slots exceeded: {used} used, {max} available.",
+      "GemOverSlots": "Gem slots exceeded: {used} used, {max} available.",
+      "RankTooHigh": "{name} is rank {rank}, but this item permits rank {max} or lower.",
+      "MissingSource": "The referenced source Item for {name} no longer exists.",
+      "MissingChangeTarget": "{name} has a mechanical change with no PF1e target.",
+      "InvalidChangeTarget": "{name} uses '{target}', which is not in PF1e's current change-target catalog.",
+      "InvalidBonusType": "{name} uses '{type}', which is not in PF1e's current bonus-type catalog."
+    },
+    "Warning": {
+      "DropItemOnly": "Only Foundry Item documents can be dropped into a slot area.",
+      "SourceMissing": "The referenced document could not be found."
+    },
+    "Error": {
+      "InvalidItem": "A valid Foundry Item document is required.",
+      "NotOwner": "You do not own this item.",
+      "PlayerInstallDisabled": "Players are not allowed to install or edit enchantments and gems.",
+      "PlayerRemoveDisabled": "Players are not allowed to remove enchantments and gems.",
+      "EntryNotFound": "The requested enchantment or gem could not be found.",
+      "InvalidImport": "The JSON file could not be read: {error}",
+      "IncompatibleImport": "This JSON file is not a compatible Enchantment and Gem Slots export."
+    },
+    "Notification": {
+      "Recalculated": "Recalculated {name}.",
+      "RecalculatedAll": "Recalculated {count} items.",
+      "CleanedReferences": "Cleared {count} broken source references.",
+      "EnabledEntries": "Enabled {count} entries.",
+      "DisabledEntries": "Disabled {count} entries.",
+      "Imported": "Imported data for {imported} items; {missing} item UUIDs were not found.",
+      "Migrated": "Migrated enchantment and gem data on {count} items."
+    },
+    "GMManager": {
+      "Title": "Enchantment & Gem Slot Manager",
+      "Summary": "Managed Items",
+      "InvalidItems": "Invalid Items",
+      "ModuleVersion": "Module Version",
+      "SchemaVersion": "Data Schema",
+      "Item": "Item",
+      "Owner": "Actor / Collection",
+      "Issues": "Issues",
+      "Actions": "Actions",
+      "WorldItem": "World Items",
+      "Valid": "Valid",
+      "NoItems": "No items currently contain module data."
+    },
+    "Settings": {
+      "GMManager": {
+        "Name": "Enchantment & Gem Slot Manager",
+        "Label": "Open Manager",
+        "Hint": "Review, validate, recalculate, import, and export enchantment and gem data across the world."
+      },
+      "EnableEnchantments": {
+        "Name": "Enable Enchantment Slots",
+        "Hint": "Show and process enchantment slots on supported items."
+      },
+      "EnableGems": {
+        "Name": "Enable Gem Slots",
+        "Hint": "Show and process gem sockets on supported items."
+      },
+      "EnableOtherPhysical": {
+        "Name": "Enable Other Physical Item Types",
+        "Hint": "Add the slot interface to PF1e physical items beyond weapons and equipment when those item documents support changes."
+      },
+      "EnforceRank": {
+        "Name": "Enforce Maximum Enchantment Rank",
+        "Hint": "Prevent enchantments whose rank exceeds the item's configured maximum rank."
+      },
+      "RankZeroFree": {
+        "Name": "Rank 0 Enchantments Use No Slots",
+        "Hint": "Treat rank 0 enchantments as having an effective slot cost of 0."
+      },
+      "AllowOverSlotting": {
+        "Name": "Allow Player Over-Slotting",
+        "Hint": "Permit item owners to exceed available slots. Gamemasters can always override slot limits."
+      },
+      "GMOverrideRank": {
+        "Name": "Allow GM Rank Overrides",
+        "Hint": "Permit Gamemasters to install enchantments above an item's maximum rank."
+      },
+      "PlayerInstall": {
+        "Name": "Allow Player Installation and Editing",
+        "Hint": "Allow owners to add, edit, and enable or disable entries on their items."
+      },
+      "PlayerRemove": {
+        "Name": "Allow Player Removal",
+        "Hint": "Allow owners to remove enchantments and gems from their items."
+      },
+      "EnableEffects": {
+        "Name": "Enable Native PF1e Mechanical Changes",
+        "Hint": "Synchronize enabled entry changes into the item's native PF1e system.changes array."
+      },
+      "ShowWarnings": {
+        "Name": "Show Validation Warnings",
+        "Hint": "Display over-slot, rank, missing-source, and incomplete-change warnings."
+      },
+      "ShowChat": {
+        "Name": "Show Post-to-Chat Button",
+        "Hint": "Allow users to post an item's slot summary to chat."
+      },
+      "Debug": {
+        "Name": "Enable Debug Logging",
+        "Hint": "Write additional module diagnostics to the browser console."
+      },
+      "DefaultEnchantWeapon": {
+        "Name": "Default Weapon Enchantment Slots",
+        "Hint": "Base enchantment slots for weapons without an item-specific override."
+      },
+      "DefaultEnchantArmor": {
+        "Name": "Default Armor Enchantment Slots",
+        "Hint": "Base enchantment slots for equipment with the armor subtype."
+      },
+      "DefaultEnchantShield": {
+        "Name": "Default Shield Enchantment Slots",
+        "Hint": "Base enchantment slots for equipment with the shield subtype."
+      },
+      "DefaultEnchantWondrous": {
+        "Name": "Default Wondrous Enchantment Slots",
+        "Hint": "Base enchantment slots for wondrous equipment, including slotted rings and similar items."
+      },
+      "DefaultEnchantOtherEquipment": {
+        "Name": "Default Other Equipment Enchantment Slots",
+        "Hint": "Base enchantment slots for other PF1e equipment subtypes."
+      },
+      "DefaultEnchantOtherPhysical": {
+        "Name": "Default Other Physical Enchantment Slots",
+        "Hint": "Base enchantment slots for optional physical item types beyond weapons and equipment."
+      },
+      "DefaultGemWeapon": {
+        "Name": "Default Weapon Gem Slots",
+        "Hint": "Base gem slots for weapons without an item-specific override."
+      },
+      "DefaultGemArmor": {
+        "Name": "Default Armor Gem Slots",
+        "Hint": "Base gem slots for equipment with the armor subtype."
+      },
+      "DefaultGemShield": {
+        "Name": "Default Shield Gem Slots",
+        "Hint": "Base gem slots for equipment with the shield subtype."
+      },
+      "DefaultGemWondrous": {
+        "Name": "Default Wondrous Gem Slots",
+        "Hint": "Base gem slots for wondrous equipment, including slotted rings and similar items."
+      },
+      "DefaultGemOtherEquipment": {
+        "Name": "Default Other Equipment Gem Slots",
+        "Hint": "Base gem slots for other PF1e equipment subtypes."
+      },
+      "DefaultGemOtherPhysical": {
+        "Name": "Default Other Physical Gem Slots",
+        "Hint": "Base gem slots for optional physical item types beyond weapons and equipment."
+      }
+    }
+  }
+}

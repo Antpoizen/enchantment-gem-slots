@@ -1,0 +1,214 @@
+<div class="tab egs-slots" data-group="primary" data-tab="egs-slots">
+  <header class="egs-tab-header">
+    <h2><i class="fas fa-gem"></i> {{localize "EGS.Tab.Label"}}</h2>
+    {{#if showChatButton}}
+    <button type="button" data-action="post-chat">
+      <i class="fas fa-comment"></i> {{localize "EGS.Action.PostToChat"}}
+    </button>
+    {{/if}}
+  </header>
+
+  {{#unless canSeeDetails}}
+  <div class="egs-notice egs-notice-info">
+    <i class="fas fa-eye-slash"></i> {{localize "EGS.Unidentified.HiddenDetails"}}
+  </div>
+  {{/unless}}
+
+  {{#if canSeeDetails}}
+  {{#if showWarnings}}
+    {{#each validation.errors as |error|}}
+    <div class="egs-notice egs-notice-error">
+      <i class="fas fa-triangle-exclamation"></i> {{error.message}}
+    </div>
+    {{/each}}
+    {{#each validation.warnings as |warning|}}
+    <div class="egs-notice egs-notice-warning">
+      <i class="fas fa-circle-exclamation"></i> {{warning.message}}
+    </div>
+    {{/each}}
+  {{/if}}
+
+  <section class="egs-config-panel">
+    <h3>{{localize "EGS.Configuration"}}</h3>
+    <div class="egs-config-grid">
+      <label>
+        <span>{{localize "EGS.Field.BaseEnchantSlots"}}</span>
+        <input type="number" min="0" step="1" value="{{settings.baseEnchantSlots}}" data-setting-field="baseEnchantSlots" {{#unless editable}}disabled{{/unless}}>
+      </label>
+      <label>
+        <span>{{localize "EGS.Field.BonusEnchantSlots"}}</span>
+        <input type="number" min="0" step="1" value="{{settings.bonusEnchantSlots}}" data-setting-field="bonusEnchantSlots" {{#unless editable}}disabled{{/unless}}>
+      </label>
+      <label>
+        <span>{{localize "EGS.Field.MaximumRank"}}</span>
+        <input type="number" min="0" step="1" value="{{settings.maxEnchantRank}}" data-setting-field="maxEnchantRank" {{#unless editable}}disabled{{/unless}}>
+      </label>
+      <label>
+        <span>{{localize "EGS.Field.BaseGemSlots"}}</span>
+        <input type="number" min="0" step="1" value="{{settings.baseGemSlots}}" data-setting-field="baseGemSlots" {{#unless editable}}disabled{{/unless}}>
+      </label>
+      <label>
+        <span>{{localize "EGS.Field.BonusGemSlots"}}</span>
+        <input type="number" min="0" step="1" value="{{settings.bonusGemSlots}}" data-setting-field="bonusGemSlots" {{#unless editable}}disabled{{/unless}}>
+      </label>
+      <label class="egs-checkbox-label">
+        <span>{{localize "EGS.Field.EnchantmentsEnabled"}}</span>
+        <input type="checkbox" data-setting-field="enchantmentsEnabled" {{checked settings.enchantmentsEnabled}} {{#unless editable}}disabled{{/unless}}>
+      </label>
+      <label class="egs-checkbox-label">
+        <span>{{localize "EGS.Field.GemsEnabled"}}</span>
+        <input type="checkbox" data-setting-field="gemsEnabled" {{checked settings.gemsEnabled}} {{#unless editable}}disabled{{/unless}}>
+      </label>
+    </div>
+    <p class="hint">{{localize "EGS.MaximumRankHint"}}</p>
+  </section>
+
+  {{#if enableEnchantments}}
+  <section class="egs-slot-section enchantments">
+    <header class="egs-section-header">
+      <div>
+        <h3><i class="fas fa-wand-sparkles"></i> {{localize "EGS.Enchantments"}}</h3>
+        <div class="egs-slot-summary {{#if summary.enchantment.over}}egs-over{{else}}{{#if summary.enchantment.full}}egs-full{{/if}}{{/if}}">
+          {{localize "EGS.Slots.Used"}}: {{summary.enchantment.used}} / {{summary.enchantment.max}}
+          &middot; {{localize "EGS.Slots.Remaining"}}: {{summary.enchantment.remaining}}
+        </div>
+      </div>
+      {{#if canInstall}}
+      <button type="button" data-entry-action="add" data-kind="enchantment">
+        <i class="fas fa-plus"></i> {{localize "EGS.Action.AddEnchantment"}}
+      </button>
+      {{/if}}
+    </header>
+
+    <div class="egs-drop-zone" data-kind="enchantment">
+      <i class="fas fa-arrow-down-to-bracket"></i> {{localize "EGS.Drop.Enchantment"}}
+    </div>
+
+    {{#if canSeeDetails}}
+      {{#if enchantments.length}}
+      <ol class="egs-entry-list">
+        {{#each enchantments as |entry|}}
+        <li class="egs-entry {{entry.disabledClass}} {{#if entry.rankInvalid}}egs-invalid{{/if}} {{#if entry.sourceMissing}}egs-missing-source{{/if}}">
+          <img src="{{entry.img}}" alt="">
+          <div class="egs-entry-content">
+            <div class="egs-entry-title-row">
+              <strong>{{entry.name}}</strong>
+              <span class="egs-badge">{{localize "EGS.Field.Rank"}} {{entry.rank}}</span>
+              <span class="egs-badge">{{localize "EGS.Slots.Cost"}} {{entry.effectiveSlotCost}}</span>
+              {{#unless entry.enabled}}<span class="egs-badge egs-badge-muted">{{localize "EGS.Disabled"}}</span>{{/unless}}
+              {{#if entry.rankInvalid}}<span class="egs-badge egs-badge-error">{{localize "EGS.InvalidRank"}}</span>{{/if}}
+              {{#if entry.sourceMissing}}<span class="egs-badge egs-badge-error">{{localize "EGS.MissingSource"}}</span>{{/if}}
+            </div>
+            {{#if entry.gpCost}}<div class="egs-entry-meta">{{localize "EGS.Field.GPCost"}}: {{entry.gpCost}}</div>{{/if}}
+            <div class="egs-entry-description">{{{entry.descriptionHTML}}}</div>
+            {{#if entry.changes.length}}
+            <div class="egs-entry-meta">{{localize "EGS.MechanicalChanges"}}: {{entry.changes.length}}</div>
+            {{/if}}
+          </div>
+          <div class="egs-entry-controls">
+            {{#if entry.sourceUuid}}
+            <button type="button" class="egs-icon-button" data-action="open-source" data-uuid="{{entry.sourceUuid}}" data-tooltip="EGS.Action.OpenSource" {{#if entry.sourceMissing}}disabled{{/if}}>
+              <i class="fas fa-link"></i>
+            </button>
+            {{/if}}
+            {{#if ../canInstall}}
+            <button type="button" class="egs-icon-button" data-entry-action="toggle" data-kind="enchantment" data-entry-id="{{entry.id}}" data-tooltip="EGS.Action.Toggle">
+              <i class="fas {{#if entry.enabled}}fa-toggle-on{{else}}fa-toggle-off{{/if}}"></i>
+            </button>
+            <button type="button" class="egs-icon-button" data-entry-action="edit" data-kind="enchantment" data-entry-id="{{entry.id}}" data-tooltip="EGS.Action.Edit">
+              <i class="fas fa-edit"></i>
+            </button>
+            {{/if}}
+            {{#if ../canRemove}}
+            <button type="button" class="egs-icon-button" data-entry-action="remove" data-kind="enchantment" data-entry-id="{{entry.id}}" data-tooltip="EGS.Action.Remove">
+              <i class="fas fa-trash"></i>
+            </button>
+            {{/if}}
+          </div>
+        </li>
+        {{/each}}
+      </ol>
+      {{else}}
+      <p class="egs-empty">{{localize "EGS.Empty.Enchantments"}}</p>
+      {{/if}}
+    {{/if}}
+  </section>
+  {{/if}}
+
+  {{#if enableGems}}
+  <section class="egs-slot-section gems">
+    <header class="egs-section-header">
+      <div>
+        <h3><i class="fas fa-gem"></i> {{localize "EGS.Gems"}}</h3>
+        <div class="egs-slot-summary {{#if summary.gem.over}}egs-over{{else}}{{#if summary.gem.full}}egs-full{{/if}}{{/if}}">
+          {{localize "EGS.Slots.Used"}}: {{summary.gem.used}} / {{summary.gem.max}}
+          &middot; {{localize "EGS.Slots.Remaining"}}: {{summary.gem.remaining}}
+        </div>
+      </div>
+      {{#if canInstall}}
+      <button type="button" data-entry-action="add" data-kind="gem">
+        <i class="fas fa-plus"></i> {{localize "EGS.Action.AddGem"}}
+      </button>
+      {{/if}}
+    </header>
+
+    <div class="egs-drop-zone" data-kind="gem">
+      <i class="fas fa-arrow-down-to-bracket"></i> {{localize "EGS.Drop.Gem"}}
+    </div>
+
+    {{#if canSeeDetails}}
+      {{#if gems.length}}
+      <ol class="egs-entry-list">
+        {{#each gems as |entry|}}
+        <li class="egs-entry {{entry.disabledClass}} {{#if entry.sourceMissing}}egs-missing-source{{/if}}">
+          <img src="{{entry.img}}" alt="">
+          <div class="egs-entry-content">
+            <div class="egs-entry-title-row">
+              <strong>{{entry.name}}</strong>
+              {{#if entry.gemType}}<span class="egs-badge">{{entry.gemType}}</span>{{/if}}
+              <span class="egs-badge">{{localize "EGS.Field.Tier"}} {{entry.rank}}</span>
+              <span class="egs-badge">{{localize "EGS.Slots.Cost"}} {{entry.effectiveSlotCost}}</span>
+              {{#unless entry.enabled}}<span class="egs-badge egs-badge-muted">{{localize "EGS.Disabled"}}</span>{{/unless}}
+              {{#if entry.sourceMissing}}<span class="egs-badge egs-badge-error">{{localize "EGS.MissingSource"}}</span>{{/if}}
+            </div>
+            {{#if entry.gpCost}}<div class="egs-entry-meta">{{localize "EGS.Field.GPCost"}}: {{entry.gpCost}}</div>{{/if}}
+            <div class="egs-entry-description">{{{entry.descriptionHTML}}}</div>
+            {{#if entry.changes.length}}
+            <div class="egs-entry-meta">{{localize "EGS.MechanicalChanges"}}: {{entry.changes.length}}</div>
+            {{/if}}
+          </div>
+          <div class="egs-entry-controls">
+            {{#if entry.sourceUuid}}
+            <button type="button" class="egs-icon-button" data-action="open-source" data-uuid="{{entry.sourceUuid}}" data-tooltip="EGS.Action.OpenSource" {{#if entry.sourceMissing}}disabled{{/if}}>
+              <i class="fas fa-link"></i>
+            </button>
+            {{/if}}
+            {{#if ../canInstall}}
+            <button type="button" class="egs-icon-button" data-entry-action="toggle" data-kind="gem" data-entry-id="{{entry.id}}" data-tooltip="EGS.Action.Toggle">
+              <i class="fas {{#if entry.enabled}}fa-toggle-on{{else}}fa-toggle-off{{/if}}"></i>
+            </button>
+            <button type="button" class="egs-icon-button" data-entry-action="edit" data-kind="gem" data-entry-id="{{entry.id}}" data-tooltip="EGS.Action.Edit">
+              <i class="fas fa-edit"></i>
+            </button>
+            {{/if}}
+            {{#if ../canRemove}}
+            <button type="button" class="egs-icon-button" data-entry-action="remove" data-kind="gem" data-entry-id="{{entry.id}}" data-tooltip="EGS.Action.Remove">
+              <i class="fas fa-trash"></i>
+            </button>
+            {{/if}}
+          </div>
+        </li>
+        {{/each}}
+      </ol>
+      {{else}}
+      <p class="egs-empty">{{localize "EGS.Empty.Gems"}}</p>
+      {{/if}}
+    {{/if}}
+  </section>
+  {{/if}}
+
+  {{#if effectsEnabled}}
+  <p class="hint egs-effects-note"><i class="fas fa-gears"></i> {{localize "EGS.Effects.NativeHint"}}</p>
+  {{/if}}
+  {{/if}}
+</div>

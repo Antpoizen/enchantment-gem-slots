@@ -1,0 +1,341 @@
+.pf1 .egs-slots {
+  padding: 0.5rem;
+  overflow-y: auto;
+}
+
+.pf1 .egs-tab-header,
+.pf1 .egs-section-header,
+.pf1 .egs-manager-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--color-border-light-primary, #777);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.pf1 .egs-tab-header h2,
+.pf1 .egs-section-header h3,
+.pf1 .egs-manager-header h2 {
+  margin: 0;
+}
+
+.pf1 .egs-config-panel,
+.pf1 .egs-slot-section {
+  border: 1px solid var(--color-border-light-primary, #777);
+  border-radius: 4px;
+  padding: 0.6rem;
+  margin: 0.6rem 0;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.pf1 .egs-config-panel h3 {
+  margin-top: 0;
+}
+
+.pf1 .egs-config-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(150px, 1fr));
+  gap: 0.5rem;
+}
+
+.pf1 .egs-config-grid label,
+.pf1 .egs-change-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 0.9em;
+}
+
+.pf1 .egs-config-grid .egs-checkbox-label {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pf1 .egs-slot-summary {
+  font-size: 0.9em;
+  opacity: 0.85;
+}
+
+.pf1 .egs-slot-summary.egs-full {
+  font-weight: 700;
+}
+
+.pf1 .egs-slot-summary.egs-over {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.pf1 .egs-drop-zone {
+  border: 2px dashed var(--color-border-light-primary, #777);
+  border-radius: 4px;
+  text-align: center;
+  padding: 0.55rem;
+  margin: 0.5rem 0;
+  opacity: 0.8;
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+
+.pf1 .egs-drop-zone.egs-drag-over {
+  opacity: 1;
+  transform: scale(1.01);
+  outline: 2px solid currentColor;
+}
+
+.pf1 .egs-entry-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.pf1 .egs-entry {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 0.55rem;
+  align-items: start;
+  border: 1px solid var(--color-border-light-secondary, #999);
+  border-radius: 3px;
+  padding: 0.4rem;
+}
+
+.pf1 .egs-entry > img,
+.pf1 .egs-manager-item > img,
+.egs-chat-card .egs-chat-header > img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border: 0;
+}
+
+.pf1 .egs-entry.egs-disabled {
+  opacity: 0.58;
+}
+
+.pf1 .egs-entry.egs-invalid,
+.pf1 .egs-entry.egs-missing-source,
+.pf1 .egs-invalid-row {
+  outline: 1px dashed currentColor;
+}
+
+.pf1 .egs-entry-title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.pf1 .egs-entry-title-row strong {
+  margin-right: 0.2rem;
+}
+
+.pf1 .egs-badge {
+  display: inline-block;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 0.05rem 0.38rem;
+  font-size: 0.78em;
+  line-height: 1.35;
+}
+
+.pf1 .egs-badge-muted {
+  opacity: 0.65;
+}
+
+.pf1 .egs-badge-error {
+  font-weight: 700;
+}
+
+.pf1 .egs-entry-description {
+  margin-top: 0.25rem;
+}
+
+.pf1 .egs-entry-description > :first-child {
+  margin-top: 0;
+}
+
+.pf1 .egs-entry-description > :last-child {
+  margin-bottom: 0;
+}
+
+.pf1 .egs-entry-meta {
+  font-size: 0.82em;
+  opacity: 0.75;
+  margin-top: 0.2rem;
+}
+
+.pf1 .egs-entry-controls,
+.pf1 .egs-manager-controls {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.pf1 button.egs-icon-button,
+.pf1 .egs-icon-button {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pf1 .egs-notice {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  padding: 0.45rem;
+  margin: 0.35rem 0;
+}
+
+.pf1 .egs-notice-error {
+  font-weight: 700;
+}
+
+.pf1 .egs-empty {
+  text-align: center;
+  font-style: italic;
+  opacity: 0.7;
+  padding: 0.75rem;
+}
+
+.pf1 .egs-effects-note {
+  margin-top: 0.75rem;
+}
+
+.pf1.egs-dialog .window-content,
+.pf1.egs-gm-manager .window-content {
+  overflow: auto;
+}
+
+.pf1 .egs-image-field {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.pf1 .egs-change-fieldset {
+  margin-top: 0.75rem;
+}
+
+.pf1 .egs-change-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.pf1 .egs-change-row {
+  border: 1px solid var(--color-border-light-secondary, #999);
+  border-radius: 3px;
+  padding: 0.45rem;
+}
+
+.pf1 .egs-change-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr)) auto;
+  gap: 0.4rem;
+  align-items: end;
+}
+
+.pf1 .egs-manager-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pf1 .egs-manager-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.pf1 .egs-manager-table-wrap {
+  overflow: auto;
+  flex: 1;
+}
+
+.pf1 .egs-manager-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pf1 .egs-manager-table th,
+.pf1 .egs-manager-table td {
+  padding: 0.35rem;
+  border-bottom: 1px solid var(--color-border-light-secondary, #999);
+  vertical-align: top;
+}
+
+.pf1 .egs-manager-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--color-bg, #f0f0e0);
+  z-index: 1;
+}
+
+.pf1 .egs-manager-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.pf1 .egs-manager-item small {
+  display: block;
+  opacity: 0.7;
+}
+
+.pf1 .egs-manager-issues {
+  margin-top: 0.25rem;
+  font-size: 0.8em;
+  max-width: 340px;
+}
+
+.egs-chat-card .egs-chat-header {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.35rem;
+}
+
+.egs-chat-card .egs-chat-header h3 {
+  margin: 0 0 0.2rem;
+}
+
+.egs-chat-card section h4 {
+  margin-bottom: 0.2rem;
+}
+
+.egs-chat-card ul {
+  padding-left: 1.2rem;
+}
+
+.egs-chat-card .egs-chat-warning {
+  border: 1px solid currentColor;
+  padding: 0.3rem;
+  font-weight: 700;
+}
+
+@media (max-width: 720px) {
+  .pf1 .egs-config-grid,
+  .pf1 .egs-change-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pf1 .egs-entry {
+    grid-template-columns: 40px 1fr;
+  }
+
+  .pf1 .egs-entry-controls {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+  }
+}
