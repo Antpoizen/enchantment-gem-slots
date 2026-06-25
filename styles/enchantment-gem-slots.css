@@ -432,6 +432,7 @@
 .pf1.egs-dialog .egs-entry-form input[type="text"],
 .pf1.egs-dialog .egs-entry-form select {
   display: block;
+  flex: 0 0 32px !important;
   width: 100% !important;
   min-width: 0 !important;
   max-width: none !important;
