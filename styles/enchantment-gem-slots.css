@@ -339,3 +339,130 @@
     justify-content: flex-end;
   }
 }
+
+/* PF1e 11.11 applies compact sizing rules to labels and controls inside item
+ * sheets. The slot UI uses dedicated field wrappers and explicit control sizes
+ * so inputs remain readable, focusable, and clickable in both light and dark
+ * themes. */
+.pf1 .egs-slots,
+.pf1 .egs-slots * {
+  box-sizing: border-box;
+}
+
+.pf1 .egs-slots {
+  position: relative;
+  z-index: 2;
+  min-height: 100%;
+  pointer-events: auto;
+}
+
+.pf1 .egs-config-grid {
+  align-items: start;
+}
+
+.pf1 .egs-config-grid .egs-field {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.3rem;
+  width: 100%;
+  min-width: 0;
+  min-height: 56px;
+  height: auto !important;
+  margin: 0;
+}
+
+.pf1 .egs-config-grid .egs-field > label {
+  display: block;
+  flex: 0 0 auto;
+  width: 100%;
+  min-width: 0;
+  min-height: 0 !important;
+  height: auto !important;
+  margin: 0;
+  line-height: 1.25;
+  white-space: normal;
+}
+
+.pf1 .egs-config-grid .egs-field > input[type="number"],
+.pf1 .egs-config-grid .egs-field > input[type="text"],
+.pf1.egs-dialog .egs-entry-form input[type="number"],
+.pf1.egs-dialog .egs-entry-form input[type="text"],
+.pf1.egs-dialog .egs-entry-form select {
+  display: block;
+  flex: 0 0 32px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: 32px !important;
+  min-height: 32px !important;
+  padding: 4px 8px !important;
+  margin: 0 !important;
+  line-height: 22px !important;
+  font-size: 14px !important;
+  border: 1px solid var(--color-border-light-primary, #777) !important;
+  border-radius: 3px;
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 3;
+}
+
+.pf1 .egs-config-grid .egs-checkbox-field {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 40px;
+  padding: 0.35rem 0.45rem;
+  border: 1px solid var(--color-border-light-secondary, #999);
+  border-radius: 3px;
+}
+
+.pf1 .egs-config-grid .egs-checkbox-field > label {
+  width: auto;
+  flex: 1 1 auto;
+  padding-right: 0.5rem;
+}
+
+.pf1 .egs-config-grid .egs-checkbox-field > input[type="checkbox"],
+.pf1.egs-dialog .egs-entry-form input[type="checkbox"] {
+  display: block;
+  flex: 0 0 20px !important;
+  width: 20px !important;
+  min-width: 20px !important;
+  height: 20px !important;
+  min-height: 20px !important;
+  margin: 0 !important;
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 3;
+}
+
+.pf1 .egs-slots button:not(.egs-icon-button),
+.pf1.egs-dialog button:not(.egs-icon-button) {
+  min-height: 32px !important;
+  height: auto !important;
+  padding: 0.35rem 0.65rem !important;
+  line-height: 1.2 !important;
+  pointer-events: auto !important;
+}
+
+.pf1.egs-dialog .egs-entry-form textarea {
+  width: 100% !important;
+  min-height: 110px !important;
+  padding: 6px 8px !important;
+  line-height: 1.35 !important;
+  pointer-events: auto !important;
+}
+
+.pf1.egs-dialog .egs-entry-form .form-group,
+.pf1.egs-dialog .egs-change-grid label {
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+@media (max-width: 520px) {
+  .pf1 .egs-config-grid,
+  .pf1 .egs-change-grid {
+    grid-template-columns: 1fr;
+  }
+}

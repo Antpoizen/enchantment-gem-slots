@@ -31,34 +31,34 @@
   <section class="egs-config-panel">
     <h3>{{localize "EGS.Configuration"}}</h3>
     <div class="egs-config-grid">
-      <label>
-        <span>{{localize "EGS.Field.BaseEnchantSlots"}}</span>
-        <input type="number" min="0" step="1" value="{{settings.baseEnchantSlots}}" data-setting-field="baseEnchantSlots" {{#unless editable}}disabled{{/unless}}>
-      </label>
-      <label>
-        <span>{{localize "EGS.Field.BonusEnchantSlots"}}</span>
-        <input type="number" min="0" step="1" value="{{settings.bonusEnchantSlots}}" data-setting-field="bonusEnchantSlots" {{#unless editable}}disabled{{/unless}}>
-      </label>
-      <label>
-        <span>{{localize "EGS.Field.MaximumRank"}}</span>
-        <input type="number" min="0" step="1" value="{{settings.maxEnchantRank}}" data-setting-field="maxEnchantRank" {{#unless editable}}disabled{{/unless}}>
-      </label>
-      <label>
-        <span>{{localize "EGS.Field.BaseGemSlots"}}</span>
-        <input type="number" min="0" step="1" value="{{settings.baseGemSlots}}" data-setting-field="baseGemSlots" {{#unless editable}}disabled{{/unless}}>
-      </label>
-      <label>
-        <span>{{localize "EGS.Field.BonusGemSlots"}}</span>
-        <input type="number" min="0" step="1" value="{{settings.bonusGemSlots}}" data-setting-field="bonusGemSlots" {{#unless editable}}disabled{{/unless}}>
-      </label>
-      <label class="egs-checkbox-label">
-        <span>{{localize "EGS.Field.EnchantmentsEnabled"}}</span>
-        <input type="checkbox" data-setting-field="enchantmentsEnabled" {{checked settings.enchantmentsEnabled}} {{#unless editable}}disabled{{/unless}}>
-      </label>
-      <label class="egs-checkbox-label">
-        <span>{{localize "EGS.Field.GemsEnabled"}}</span>
-        <input type="checkbox" data-setting-field="gemsEnabled" {{checked settings.gemsEnabled}} {{#unless editable}}disabled{{/unless}}>
-      </label>
+      <div class="egs-field">
+        <label for="egs-{{item.id}}-base-enchant-slots">{{localize "EGS.Field.BaseEnchantSlots"}}</label>
+        <input id="egs-{{item.id}}-base-enchant-slots" type="number" min="0" step="1" value="{{settings.baseEnchantSlots}}" data-setting-field="baseEnchantSlots" {{#unless editable}}disabled{{/unless}}>
+      </div>
+      <div class="egs-field">
+        <label for="egs-{{item.id}}-bonus-enchant-slots">{{localize "EGS.Field.BonusEnchantSlots"}}</label>
+        <input id="egs-{{item.id}}-bonus-enchant-slots" type="number" min="0" step="1" value="{{settings.bonusEnchantSlots}}" data-setting-field="bonusEnchantSlots" {{#unless editable}}disabled{{/unless}}>
+      </div>
+      <div class="egs-field">
+        <label for="egs-{{item.id}}-maximum-rank">{{localize "EGS.Field.MaximumRank"}}</label>
+        <input id="egs-{{item.id}}-maximum-rank" type="number" min="0" step="1" value="{{settings.maxEnchantRank}}" data-setting-field="maxEnchantRank" {{#unless editable}}disabled{{/unless}}>
+      </div>
+      <div class="egs-field">
+        <label for="egs-{{item.id}}-base-gem-slots">{{localize "EGS.Field.BaseGemSlots"}}</label>
+        <input id="egs-{{item.id}}-base-gem-slots" type="number" min="0" step="1" value="{{settings.baseGemSlots}}" data-setting-field="baseGemSlots" {{#unless editable}}disabled{{/unless}}>
+      </div>
+      <div class="egs-field">
+        <label for="egs-{{item.id}}-bonus-gem-slots">{{localize "EGS.Field.BonusGemSlots"}}</label>
+        <input id="egs-{{item.id}}-bonus-gem-slots" type="number" min="0" step="1" value="{{settings.bonusGemSlots}}" data-setting-field="bonusGemSlots" {{#unless editable}}disabled{{/unless}}>
+      </div>
+      <div class="egs-field egs-checkbox-field">
+        <label for="egs-{{item.id}}-enchantments-enabled">{{localize "EGS.Field.EnchantmentsEnabled"}}</label>
+        <input id="egs-{{item.id}}-enchantments-enabled" type="checkbox" data-setting-field="enchantmentsEnabled" {{checked settings.enchantmentsEnabled}} {{#unless editable}}disabled{{/unless}}>
+      </div>
+      <div class="egs-field egs-checkbox-field">
+        <label for="egs-{{item.id}}-gems-enabled">{{localize "EGS.Field.GemsEnabled"}}</label>
+        <input id="egs-{{item.id}}-gems-enabled" type="checkbox" data-setting-field="gemsEnabled" {{checked settings.gemsEnabled}} {{#unless editable}}disabled{{/unless}}>
+      </div>
     </div>
     <p class="hint">{{localize "EGS.MaximumRankHint"}}</p>
   </section>
