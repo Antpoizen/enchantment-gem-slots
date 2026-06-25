@@ -1,6 +1,40 @@
-.pf1 .egs-slots {
+.pf1.sheet.item .primary-body.egs-primary-body-active {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.pf1.sheet.item .primary-body > .tab.egs-slots {
+  box-sizing: border-box;
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
   padding: 0.5rem;
+  overflow-x: hidden;
   overflow-y: auto;
+}
+
+.pf1.sheet.item .primary-body > .tab.egs-slots.active {
+  display: flex !important;
+}
+
+/* PF1's primary body intentionally hides overflow. The EGS tab therefore
+ * becomes its own constrained scroll container. Each direct child remains a
+ * natural-height flex item, so panels grow automatically with their content. */
+.pf1.sheet.item .egs-slots > .egs-tab-header,
+.pf1.sheet.item .egs-slots > .egs-notice,
+.pf1.sheet.item .egs-slots > .egs-config-panel,
+.pf1.sheet.item .egs-slots > .egs-slot-section,
+.pf1.sheet.item .egs-slots > .egs-effects-note {
+  flex: 0 0 auto !important;
+  width: 100%;
+  min-width: 0;
+  height: auto !important;
+  min-height: 0;
+  max-height: none !important;
+  overflow: visible !important;
 }
 
 .pf1 .egs-tab-header,
@@ -26,13 +60,20 @@
   border: 1px solid var(--color-border-light-primary, #777);
   border-radius: 4px;
   padding: 0.6rem;
-  padding-bottom: 100rem;
   margin: 0.6rem 0;
   background: rgba(0, 0, 0, 0.04);
 }
 
 .pf1 .egs-config-panel h3 {
   margin-top: 0;
+}
+
+.pf1 .egs-config-panel,
+.pf1 .egs-slot-section {
+  display: block;
+  height: auto !important;
+  min-height: fit-content;
+  overflow: visible !important;
 }
 
 .pf1 .egs-config-grid {
@@ -353,7 +394,7 @@
 .pf1 .egs-slots {
   position: relative;
   z-index: 2;
-  min-height: 100%;
+  min-height: 0;
   pointer-events: auto;
 }
 
@@ -391,6 +432,7 @@
 .pf1.egs-dialog .egs-entry-form input[type="text"],
 .pf1.egs-dialog .egs-entry-form select {
   display: block;
+  flex: 0 0 32px !important;
   width: 100% !important;
   min-width: 0 !important;
   max-width: none !important;

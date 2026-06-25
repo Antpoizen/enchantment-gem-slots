@@ -226,11 +226,14 @@ function activateCustomTab(app, html, navLink, tabContent) {
   const body = html.find("section.primary-body").first();
   nav.find("[data-tab]").removeClass("active");
   body.children(".tab[data-group='primary']").removeClass("active");
+  body.addClass("egs-primary-body-active");
   navLink.addClass("active");
   tabContent.addClass("active");
 }
 
 function installTabNavigation(app, html, navLink, tabContent) {
+  const body = html.find("section.primary-body").first();
+
   navLink.on("click.egs", (event) => {
     event.preventDefault();
     event.stopPropagation();
@@ -239,6 +242,7 @@ function installTabNavigation(app, html, navLink, tabContent) {
 
   html.find("nav.tabs[data-group='primary'] [data-tab]").not(navLink).on("click.egs", () => {
     app._egsActive = false;
+    body.removeClass("egs-primary-body-active");
     tabContent.removeClass("active");
     navLink.removeClass("active");
   });

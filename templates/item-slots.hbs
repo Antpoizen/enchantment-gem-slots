@@ -28,7 +28,7 @@
     {{/each}}
   {{/if}}
 
-  <section class="egs-config-panel">
+  <div class="egs-config-panel">
     <h3>{{localize "EGS.Configuration"}}</h3>
     <div class="egs-config-grid">
       <div class="egs-field">
@@ -61,10 +61,10 @@
       </div>
     </div>
     <p class="hint">{{localize "EGS.MaximumRankHint"}}</p>
-  </section>
+  </div>
 
   {{#if enableEnchantments}}
-  <section class="egs-slot-section enchantments">
+  <div class="egs-slot-section enchantments">
     <header class="egs-section-header">
       <div>
         <h3><i class="fas fa-wand-sparkles"></i> {{localize "EGS.Enchantments"}}</h3>
@@ -132,11 +132,11 @@
       <p class="egs-empty">{{localize "EGS.Empty.Enchantments"}}</p>
       {{/if}}
     {{/if}}
-  </section>
+  </div>
   {{/if}}
 
   {{#if enableGems}}
-  <section class="egs-slot-section gems">
+  <div class="egs-slot-section gems">
     <header class="egs-section-header">
       <div>
         <h3><i class="fas fa-gem"></i> {{localize "EGS.Gems"}}</h3>
@@ -204,7 +204,7 @@
       <p class="egs-empty">{{localize "EGS.Empty.Gems"}}</p>
       {{/if}}
     {{/if}}
-  </section>
+  </div>
   {{/if}}
 
   {{#if effectsEnabled}}

@@ -3,7 +3,9 @@
 A Foundry Virtual Tabletop module that adds configurable enchantment slots and gem sockets to Pathfinder 1e equipment.
 
 
-## Version 1.0.1
+## Version 1.0.2
+
+This release fixes PF1e item-sheet layout conflicts by making the Enchantments & Gems tab its own scroll container and allowing every panel to use its natural content height. No manual bottom padding is required.
 
 - Corrected the Enchantments & Gems configuration layout on PF1e 11.11 item sheets.
 - Replaced label-based grid wrappers that PF1e compressed with dedicated field containers.
