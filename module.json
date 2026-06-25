@@ -2,7 +2,7 @@
   "id": "enchantment-gem-slots",
   "title": "PF1e Enchantment and Gem Slots",
   "description": "Adds configurable enchantment slots, gem sockets, drag-and-drop entries, validation, chat cards, and native PF1e ItemChange integration to equipment items.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "authors": [
     {
       "name": "Matthew Liss"
